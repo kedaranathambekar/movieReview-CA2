@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MovieReview_App</string>
+    <string name="button_addMovieReview">Add MovieReview</string>
+    <string name="hint_MovieTitle">Moviereview Title</string>
+    <string name="movieReview_Descriptione">MovieReview_Description</string>
+    <string name="movieReview_reviewername">Reviewer Name</string>
+</resources>

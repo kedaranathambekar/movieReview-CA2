@@ -13,7 +13,7 @@ class MainApp : Application() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
         i("MovieReviewApp Started")
-        movieReview.add(MoviereviewModel("hello","bye","there"))
+        //movieReview.add(MoviereviewModel("hello","bye","there"))
 
     }
 

@@ -4,4 +4,6 @@
     <string name="hint_MovieTitle">Moviereview Title</string>
     <string name="movieReview_Descriptione">MovieReview_Description</string>
     <string name="movieReview_reviewername">Reviewer Name</string>
+    <string name="menu_addMoviereview">Add</string>
+    <string name="menu_cancelMoviereview">Back</string>
 </resources>

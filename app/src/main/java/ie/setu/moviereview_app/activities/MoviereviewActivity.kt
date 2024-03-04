@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import ie.setu.moviereview_app.R
 import ie.setu.moviereview_app.databinding.ActivityMoviereviewBinding
+import ie.setu.moviereview_app.main.MainApp
 import ie.setu.moviereview_app.models.MoviereviewModel
 import timber.log.Timber
 import timber.log.Timber.i
@@ -14,15 +15,17 @@ class MoviereviewActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMoviereviewBinding
 
     var movieReview = MoviereviewModel()
-    var movieReviews = ArrayList<MoviereviewModel>()
+    //var movieReviews = ArrayList<MoviereviewModel>()
+    lateinit var app : MainApp
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMoviereviewBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setContentView(R.layout.activity_moviereview)
+        app = application as MainApp
+        //setContentView(R.layout.activity_moviereview)
 
-        Timber.plant(Timber.DebugTree())
-        i("Moviereview Activity starterd.. ")
+        //Timber.plant(Timber.DebugTree())
+        i("Moviereview Activity started.. ")
 
         binding.btnAdd.setOnClickListener() {
 
@@ -30,11 +33,11 @@ class MoviereviewActivity : AppCompatActivity() {
             movieReview.description = binding.movieReviewDescription.text.toString()
             movieReview.reviewer = binding.movieReviewReviewname.text.toString()
             if (movieReview.tittle.isNotEmpty() && movieReview.description.isNotEmpty() && movieReview.reviewer.isNotEmpty()) {
-                movieReviews.add(movieReview.copy())
+               app.movieReview.add(movieReview.copy())
 //                i("add Button Pressed: ${movieReview.tittle} + ${movieReview.description} + ${movieReview.reviewer}")
                 i("add Button Pressed: $movieReview")
-                for (i in movieReviews.indices)
-                { i("Movireview[$i]:${this.movieReviews[i]}")}
+                for (i in app.movieReview.indices)
+                { i("Movie reviews[$i]:${this.app.movieReview[i]}")}
             }
             else {
                 Snackbar

@@ -8,6 +8,7 @@ import android.view.MenuItem
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.snackbar.Snackbar
+import com.squareup.picasso.Picasso
 import ie.setu.moviereview_app.R
 import ie.setu.moviereview_app.databinding.ActivityMoviereviewBinding
 import ie.setu.moviereview_app.helpers.showImagePicker
@@ -44,6 +45,10 @@ class MoviereviewActivity : AppCompatActivity() {
             binding.movieReviewDescription.setText(movieReview.description)
             binding.movieReviewReviewname.setText(movieReview.reviewer)
             binding.btnAdd.setText(R.string.save_moviereview)
+            Picasso.get()
+                .load(movieReview.image)
+                .into(binding.placemarkImage)
+
         }
         //setContentView(R.layout.activity_moviereview)
 
@@ -76,6 +81,7 @@ class MoviereviewActivity : AppCompatActivity() {
             finish()
             }
 
+        registerImagePickerCallback()
 //        binding.chooseImage.setOnClickListener {
 //            i("Select image")
 //        }
@@ -122,6 +128,10 @@ class MoviereviewActivity : AppCompatActivity() {
                     RESULT_OK -> {
                         if (result.data != null) {
                             i("Got Result ${result.data!!.data}")
+                            movieReview.image = result.data!!.data!!
+                            Picasso.get()
+                                .load(movieReview.image)
+                                .into(binding.placemarkImage)
                         } // end of if
                     }
                     RESULT_CANCELED -> { } else -> { }

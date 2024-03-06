@@ -47,6 +47,7 @@ dependencies {
     implementation("com.github.ajalt:timberkt:1.5.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.core:core-splashscreen:1.0.0")
+    implementation("com.squareup.picasso:picasso:2.71828")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

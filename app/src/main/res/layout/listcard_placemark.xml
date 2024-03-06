@@ -5,11 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="8dp"
-    android:elevation="24dp">
+    android:elevation="24dp"
+    android:background="@drawable/ok">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/ok"
         android:padding="16dp">
 
         <TextView
@@ -17,7 +19,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:textSize="20sp"
+            android:textSize="35sp"
+            android:textColor="@color/purple"
             tools:text="Movie Name" />
 
         <TextView
@@ -25,7 +28,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/movieName"
-            android:textSize="20sp"
+            android:textSize="28sp"
+            android:textColor="@color/purple"
             tools:text="Movie Description" />
 
         <TextView
@@ -34,6 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/movieDescription"
             android:textSize="20sp"
+            android:textColor="@color/purple"
             tools:text="Reviewer Name" />
 
     </RelativeLayout>

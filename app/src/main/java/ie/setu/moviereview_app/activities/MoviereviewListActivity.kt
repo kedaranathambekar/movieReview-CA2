@@ -13,12 +13,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ie.setu.moviereview_app.R
 import ie.setu.moviereview_app.adapters.MoviereviewAdapter
+import ie.setu.moviereview_app.adapters.MoviereviewListener
 import ie.setu.moviereview_app.databinding.ActivityMoviereviewListBinding
 import ie.setu.moviereview_app.databinding.ListcardPlacemarkBinding
 import ie.setu.moviereview_app.main.MainApp
 import ie.setu.moviereview_app.models.MoviereviewModel
 
-class MoviereviewListActivity : AppCompatActivity() {
+class MoviereviewListActivity : AppCompatActivity(), MoviereviewListener {
 
 
     lateinit var app: MainApp
@@ -34,7 +35,7 @@ class MoviereviewListActivity : AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = MoviereviewAdapter(app.movieReview)
+        binding.recyclerView.adapter = MoviereviewAdapter(app.movieReviews.findAll(),this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -52,12 +53,28 @@ class MoviereviewListActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+
     private val getResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
 
         if (it.resultCode == Activity.RESULT_OK){
-            (binding.recyclerView.adapter)?.notifyItemRangeChanged(0,app.movieReview.size)
+            (binding.recyclerView.adapter)?.notifyItemRangeChanged(0,app.movieReviews.findAll().size)
         }
     }
+    override fun onMoviereviewClick(placemark: MoviereviewModel) {
+        val launcherIntent = Intent(this, MoviereviewActivity::class.java)
+        launcherIntent.putExtra("placemark_edit", placemark)
+        getClickResult.launch(launcherIntent)
+    }
+
+    private val getClickResult =
+        registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) {
+            if (it.resultCode == Activity.RESULT_OK) {
+                (binding.recyclerView.adapter)?.
+                notifyItemRangeChanged(0,app.movieReviews.findAll().size)
+            }
+        }
 }
 
 //class MoviereviewAdapter constructor(private var moviereviews: List<MoviereviewModel>) :

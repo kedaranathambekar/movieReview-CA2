@@ -6,4 +6,9 @@
     <string name="movieReview_reviewername">Reviewer Name</string>
     <string name="menu_addMoviereview">Add</string>
     <string name="menu_cancelMoviereview">Back</string>
+    <string name="enter_Moviereview_title"> Please enter a Movie Title </string>
+    <string name="save_moviereview"> Update Moviereview </string>
+    <string name="button_addImage"> Upload Image </string>
+    <string name="select_movie_image">Select movie image</string>
+
 </resources>

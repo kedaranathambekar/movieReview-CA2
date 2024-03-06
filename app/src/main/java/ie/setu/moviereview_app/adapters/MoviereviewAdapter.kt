@@ -6,7 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import ie.setu.moviereview_app.databinding.ListcardPlacemarkBinding
 import ie.setu.moviereview_app.models.MoviereviewModel
 
-class MoviereviewAdapter constructor(private var moviereviews: List<MoviereviewModel>) :
+class MoviereviewAdapter constructor(private var moviereviews: List<MoviereviewModel>,
+                                     private val listener: MoviereviewListener) :
     RecyclerView.Adapter<MoviereviewAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -17,8 +18,8 @@ class MoviereviewAdapter constructor(private var moviereviews: List<MoviereviewM
     }
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
-        val placemark = moviereviews[holder.adapterPosition]
-        holder.bind(placemark)
+        val moviereview = moviereviews[holder.adapterPosition]
+        holder.bind(moviereview,listener)
     }
 
     override fun getItemCount(): Int = moviereviews.size
@@ -26,10 +27,11 @@ class MoviereviewAdapter constructor(private var moviereviews: List<MoviereviewM
     class MainHolder(private val binding: ListcardPlacemarkBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(moviereview: MoviereviewModel) {
+        fun bind(moviereview: MoviereviewModel, listener: MoviereviewListener) {
             binding.movieName.text = moviereview.tittle
             binding.movieDescription.text = moviereview.description
             binding.Reviewer.text = moviereview.reviewer
+            binding.root.setOnClickListener { listener.onMoviereviewClick(moviereview) }
         }
     }
 }

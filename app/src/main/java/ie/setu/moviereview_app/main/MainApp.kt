@@ -1,13 +1,16 @@
 package ie.setu.moviereview_app.main
 
 import android.app.Application
+import ie.setu.moviereview_app.models.MoviereviewMemStore
 import ie.setu.moviereview_app.models.MoviereviewModel
+import ie.setu.moviereview_app.models.MoviereviewStore
 import timber.log.Timber
 import timber.log.Timber.i
 
 class MainApp : Application() {
 
-    val movieReview  = ArrayList<MoviereviewModel>()
+   // val movieReview  = ArrayList<MoviereviewModel>()
+    val movieReviews = MoviereviewMemStore()
     override fun onCreate() {
 
         super.onCreate()

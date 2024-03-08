@@ -17,13 +17,4 @@ fun showImagePicker(intentLauncher : ActivityResultLauncher<Intent>, context: Co
         context.getString(R.string.select_movie_image))
     intentLauncher.launch(imagePickerTargetIntent)
 
-
-
-
-
-
-//    var chooseFile = Intent(Intent.ACTION_OPEN_DOCUMENT)
-//    chooseFile.type = "image/*"
-//    chooseFile = Intent.createChooser(chooseFile, R.string.select_movie_image.toString())
-//    intentLauncher.launch(chooseFile)
 }

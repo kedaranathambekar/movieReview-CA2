@@ -10,27 +10,20 @@ import timber.log.Timber.i
 
 class MainApp : Application() {
 
-    //val movieReviews  = ArrayList<MoviereviewModel>()
-    //val movieReviews = MoviereviewMemStore()
+
     lateinit var movieReviewss: MoviereviewStore
 
     override fun onCreate() {
 
         super.onCreate()
         Timber.plant(Timber.DebugTree())
-        //movieReviewss = MoviereviewJSONStore(applicationContext)
-        movieReviewss = MoviereviewMemStore()
+        movieReviewss = MoviereviewJSONStore(applicationContext)
 
-       // movieReviews = MoviereviewJSONStore()
         i("MovieReviewApp Started")
-        //movieReview.add(MoviereviewModel("hello","bye","there"))
+
 
     }
 
-//    fun deleteMovieReview(movieReview: MoviereviewModel) {
-//        movieReviews.remove(movieReview)
-//
-//
-//    }
+
 
 }

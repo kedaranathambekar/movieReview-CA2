@@ -27,7 +27,7 @@ class MoviereviewActivity : AppCompatActivity() {
     private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
     var edit = false
 
-    //var movieReviews = ArrayList<MoviereviewModel>()
+
     lateinit var app : MainApp
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,9 +57,7 @@ class MoviereviewActivity : AppCompatActivity() {
             }
 
         }
-        //setContentView(R.layout.activity_moviereview)
 
-        //Timber.plant(Timber.DebugTree())
         i("Moviereview Activity started.. ")
 
         binding.btnAdd.setOnClickListener() {
@@ -83,53 +81,18 @@ class MoviereviewActivity : AppCompatActivity() {
             }
 
         registerImagePickerCallback()
-//        binding.chooseImage.setOnClickListener {
-//            i("Select image")
-//        }
+
 
         binding.chooseImage.setOnClickListener {
             showImagePicker(imageIntentLauncher,this)
         }
-//        binding.deleteData.setOnClickListener {
-//            if (edit) {
-//                i("Delete button clicked")
-//                showDeleteConfirmationDialog()
-//            }
-//        }
+
 
 
 
 
     }
 
-//    private fun showDeleteConfirmationDialog() {
-//        AlertDialog.Builder(this)
-//            .setTitle(R.string.delete_movieData)
-//            .setMessage(R.string.delete_movieData)
-//            .setPositiveButton("Yes") { _, _ ->
-//                i("User confirmed delete. Calling deleteMovieReview.")
-//                deleteMovieReview()
-//            }
-//            .setNegativeButton("No", null)
-//            .show()
-//    }
-
-
-//    private fun deleteMovieReview() {
-//
-//        Timber.i("Deleting movie review with ID: ${movieReview.id}")
-//        Timber.d("Movie review IDs in the list: ${app.movieReviews.map { it.id }}")
-//
-//        val removed = app.movieReviews.remove(movieReview)
-//        if (removed) {
-//            i("Movie review deleted successfully. Remaining reviews: ${app.movieReviews.size}")
-//        } else {
-//            Timber.e("Failed to delete movie review.")
-//        }
-//
-//        setResult(RESULT_OK)
-//        finish()
-//    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_moviereview, menu)
@@ -149,13 +112,7 @@ class MoviereviewActivity : AppCompatActivity() {
             R.id.item_cancel -> {
                 finish();
             }
-//            R.id.item_delete -> {
-//                if (edit) {
-//                    app.deleteMovieReview(movieReview);
-//                    setResult(RESULT_OK);
-//                    finish();
-//                }
-//            }
+
         }
         return super.onOptionsItemSelected(item);
     }

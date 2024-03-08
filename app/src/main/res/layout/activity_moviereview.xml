@@ -70,7 +70,7 @@
                     android:maxLength="300"
                     android:maxLines="3"
                     android:padding="8dp"
-                    android:textColor="@color/white"
+                    android:textColor="@color/purple"
                     android:textSize="14sp" />
 
                 <EditText
@@ -85,7 +85,7 @@
                     android:maxLength="25"
                     android:maxLines="1"
                     android:padding="8dp"
-                    android:textColor="@color/white"
+                    android:textColor="@color/purple"
                     android:textSize="14sp" />
 
                 <ImageView

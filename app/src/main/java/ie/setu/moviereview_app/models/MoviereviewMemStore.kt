@@ -10,31 +10,41 @@ internal fun getId(): Long {
 
 class MoviereviewMemStore : MoviereviewStore{
 
-    val movieReview = ArrayList<MoviereviewModel>()
+    val movieReviews = ArrayList<MoviereviewModel>()
 
 
     override fun findAll(): List<MoviereviewModel> {
-        return movieReview
+        return movieReviews
     }
 
-    override fun create(movieReviews: MoviereviewModel) {
-        movieReviews.id = getId()
-        movieReview.add(movieReviews)
+    override fun create(movieReview: MoviereviewModel) {
+        movieReview.id = getId()
+        this.movieReviews.add(movieReview)
         logAll()
     }
 
-    override fun update(moviereview: MoviereviewModel) {
-        var updateMovie: MoviereviewModel? = movieReview.find { p -> p.id == moviereview.id }
+    override fun update(movieReview: MoviereviewModel) {
+        var updateMovie: MoviereviewModel? = this.movieReviews.find { p -> p.id == movieReview.id }
         if (updateMovie != null) {
-            updateMovie.tittle = moviereview.tittle
-            updateMovie.description = moviereview.description
-            updateMovie.reviewer = moviereview.reviewer
+            updateMovie.tittle = movieReview.tittle
+            updateMovie.description = movieReview.description
+            updateMovie.reviewer = movieReview.reviewer
+            updateMovie.image = movieReview.image
             logAll()
         }
     }
 
+    override fun delete(movieReview: MoviereviewModel) {
+        movieReviews.remove(movieReview)
+    }
+
+    override fun findOne(id: Long): MoviereviewModel? {
+        var foundPlacemark: MoviereviewModel? = movieReviews.find { p -> p.id == id }
+        return foundPlacemark
+    }
+
 
     private fun logAll() {
-        movieReview.forEach { i("$it") }
+        movieReviews.forEach { i("$it") }
     }
 }

@@ -3,6 +3,7 @@ package ie.setu.moviereview_app.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import ie.setu.moviereview_app.databinding.ListcardPlacemarkBinding
 import ie.setu.moviereview_app.models.MoviereviewModel
 
@@ -31,7 +32,8 @@ class MoviereviewAdapter constructor(private var moviereviews: List<MoviereviewM
             binding.movieName.text = moviereview.tittle
             binding.movieDescription.text = moviereview.description
             binding.Reviewer.text = moviereview.reviewer
-            binding.root.setOnClickListener { listener.onMoviereviewClick(moviereview) }
+            Picasso.get().load(moviereview.image).resize(200,200).into(binding.imageIcon)
+            binding.root.setOnClickListener { listener.onMoviereviewClick(moviereview,adapterPosition) }
         }
     }
 }

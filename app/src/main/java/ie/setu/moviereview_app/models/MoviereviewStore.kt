@@ -5,5 +5,11 @@ interface MoviereviewStore {
     fun findAll(): List<MoviereviewModel>
     fun create(movieReview: MoviereviewModel)
 
-    fun update(placemark: MoviereviewModel)
+    fun update(movieReview: MoviereviewModel)
+
+    fun findOne(id : Long) : MoviereviewModel?
+
+    fun delete (movieReview: MoviereviewModel)
+
+
 }

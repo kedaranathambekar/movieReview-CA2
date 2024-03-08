@@ -9,6 +9,11 @@
     <string name="enter_Moviereview_title"> Please enter a Movie Title </string>
     <string name="save_moviereview"> Update Moviereview </string>
     <string name="button_addImage"> Upload Image </string>
+    <string name="delete_movieData"> Delete </string>
     <string name="select_movie_image">Select movie image</string>
+    <string name="change_movie_image">Update movie image</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
 
 </resources>

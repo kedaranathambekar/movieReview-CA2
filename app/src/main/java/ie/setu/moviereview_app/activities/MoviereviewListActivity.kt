@@ -24,6 +24,7 @@ class MoviereviewListActivity : AppCompatActivity(), MoviereviewListener {
 
     lateinit var app: MainApp
     private lateinit var binding: ActivityMoviereviewListBinding
+    private var position: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMoviereviewListBinding.inflate(layoutInflater)
@@ -35,7 +36,7 @@ class MoviereviewListActivity : AppCompatActivity(), MoviereviewListener {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = MoviereviewAdapter(app.movieReviews.findAll(),this)
+        binding.recyclerView.adapter = MoviereviewAdapter(app.movieReviewss.findAll(),this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -57,12 +58,13 @@ class MoviereviewListActivity : AppCompatActivity(), MoviereviewListener {
     private val getResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
 
         if (it.resultCode == Activity.RESULT_OK){
-            (binding.recyclerView.adapter)?.notifyItemRangeChanged(0,app.movieReviews.findAll().size)
+            (binding.recyclerView.adapter)?.notifyItemRangeChanged(0,app.movieReviewss.findAll().size)
         }
     }
-    override fun onMoviereviewClick(placemark: MoviereviewModel) {
+    override fun onMoviereviewClick(placemark: MoviereviewModel ,pos : Int) {
         val launcherIntent = Intent(this, MoviereviewActivity::class.java)
         launcherIntent.putExtra("placemark_edit", placemark)
+        position = pos
         getClickResult.launch(launcherIntent)
     }
 
@@ -72,10 +74,14 @@ class MoviereviewListActivity : AppCompatActivity(), MoviereviewListener {
         ) {
             if (it.resultCode == Activity.RESULT_OK) {
                 (binding.recyclerView.adapter)?.
-                notifyItemRangeChanged(0,app.movieReviews.findAll().size)
+                notifyItemRangeChanged(0,app.movieReviewss.findAll().size)
             }
+            else
+                if (it.resultCode == 99)     (binding.recyclerView.adapter)?.notifyItemRemoved(position)
+            //binding.recyclerView.adapter = MoviereviewAdapter(app.movieReviewss.findAll(),this)
         }
 }
+
 
 //class MoviereviewAdapter constructor(private var moviereviews: List<MoviereviewModel>) :
 //    RecyclerView.Adapter<MoviereviewAdapter.MainHolder>() {

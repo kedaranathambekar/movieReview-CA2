@@ -9,4 +9,16 @@
         android:title="@string/menu_addMoviereview"
 
         app:showAsAction="always" />
+
+
+<!--    <item-->
+<!--        android:id="@+id/dark_mode"-->
+<!--        android:icon="@drawable/darkmode"-->
+<!--        android:title="@string/menu_darkmode"-->
+
+<!--        app:showAsAction="always" />-->
+
+
+
+
 </menu>

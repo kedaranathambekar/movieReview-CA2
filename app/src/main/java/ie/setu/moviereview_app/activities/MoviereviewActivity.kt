@@ -4,11 +4,13 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import ie.setu.moviereview_app.R
@@ -113,11 +115,25 @@ class MoviereviewActivity : AppCompatActivity() {
                 finish();
             }
 
+            R.id.dark_mode -> {  // Handle the toggle for dark mode
+                val nightMode = AppCompatDelegate.getDefaultNightMode()
+                if (nightMode == AppCompatDelegate.MODE_NIGHT_YES) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    Log.d("DarkModeToggle", "Switching to Light Mode")
+                } else {
+                    Log.d("DarkModeToggle", "Switching to Dark Mode")
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                }
+                // Recreate the activity for the theme change to take effect immediately
+                recreate()
+            }
+
         }
         return super.onOptionsItemSelected(item);
     }
 
     private fun registerImagePickerCallback() {
+
         imageIntentLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult())
             { result ->

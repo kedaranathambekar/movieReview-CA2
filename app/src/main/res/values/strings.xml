@@ -5,6 +5,7 @@
     <string name="movieReview_Descriptione">MovieReview_Description</string>
     <string name="movieReview_reviewername">Reviewer Name</string>
     <string name="menu_addMoviereview">Add</string>
+    <string name="menu_darkmode">DarkMode</string>
     <string name="menu_cancelMoviereview">Back</string>
     <string name="enter_Moviereview_title"> Please enter a Movie Title </string>
     <string name="save_moviereview"> Update Moviereview </string>
@@ -14,6 +15,10 @@
     <string name="change_movie_image">Update movie image</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="open_nav">Open Navigation</string>
+    <string name="close_nav">Close Navigation</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
